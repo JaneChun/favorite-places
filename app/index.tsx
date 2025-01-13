@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AllPlaces from '../screens/AllPlaces';
 import AddPlace from '../screens/AddPlace';
-import IconButton from '../components/IconButton';
+import IconButton from '../components/ui/IconButton';
 import { Colors } from '../constants/colors';
 
 const Stack = createNativeStackNavigator();
