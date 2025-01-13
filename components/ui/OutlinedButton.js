@@ -2,10 +2,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Colors } from '../../constants/colors';
 
-const OutlinedButton = ({ children, icon, onPress }) => {
+const OutlinedButton = ({ children, style, icon, onPress }) => {
 	return (
 		<Pressable
-			style={({ pressed }) => [styles.container, pressed && styles.pressed]}
+			style={({ pressed }) => [
+				style,
+				styles.container,
+				pressed && styles.pressed,
+			]}
 			onPress={onPress}
 		>
 			<Ionicons
