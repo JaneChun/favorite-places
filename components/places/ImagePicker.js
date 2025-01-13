@@ -44,7 +44,10 @@ const ImagePicker = () => {
 			quality: 0.5,
 		});
 
-		setImage(image.uri);
+		const {
+			assets: [{ uri }],
+		} = image;
+		setImage(uri);
 	};
 
 	let imagePreview = <Text>No image taken yet.</Text>;
