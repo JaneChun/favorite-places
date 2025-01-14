@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AllPlaces from '../screens/AllPlaces';
 import AddPlace from '../screens/AddPlace';
 import Map from '../screens/Map';
+import PlaceDetail from '../screens/PlaceDetail';
 import IconButton from '../components/ui/IconButton';
 import { Colors } from '../constants/colors';
 import { useEffect, useState } from 'react';
@@ -68,6 +69,7 @@ export default function Index() {
 					}}
 				/>
 				<Stack.Screen name='Map' component={Map} />
+				<Stack.Screen name='PlaceDetail' component={PlaceDetail} />
 			</Stack.Navigator>
 		</>
 	);
