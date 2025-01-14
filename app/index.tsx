@@ -5,10 +5,30 @@ import AddPlace from '../screens/AddPlace';
 import Map from '../screens/Map';
 import IconButton from '../components/ui/IconButton';
 import { Colors } from '../constants/colors';
+import { useEffect, useState } from 'react';
+import { init } from '../util/database';
+import AppLoading from 'expo-app-loading';
 
 const Stack = createNativeStackNavigator();
 
 export default function Index() {
+	const [dbInitialized, setDbInitialized] = useState(false);
+
+	useEffect(() => {
+		init()
+			.then(() => {
+				console.log('Database initialized successfully.');
+				setDbInitialized(true);
+			})
+			.catch((err) => {
+				console.error('Database initialization failed:', err);
+			});
+	}, []);
+
+	if (!dbInitialized) {
+		return <AppLoading />;
+	}
+
 	return (
 		<>
 			<StatusBar style='dark' />

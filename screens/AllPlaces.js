@@ -1,16 +1,24 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import PlaceList from '../components/places/PlacesList';
 import { useEffect, useState } from 'react';
+import { fetchPlaces } from '@/util/database';
 
-const AllPlaces = ({ route }) => {
+const AllPlaces = () => {
 	const [loadedPlaces, setLoadedPlaces] = useState([]);
-	const { params: { place } = {} } = route;
 
 	useEffect(() => {
-		if (place) {
-			setLoadedPlaces((curPlaces) => [...curPlaces, place]);
-		}
-	}, [route]);
+		const loadPlaces = async () => {
+			console.log('loadPlaces');
+			try {
+				const fetchedPlaces = await fetchPlaces();
+				setLoadedPlaces(fetchedPlaces);
+			} catch (err) {
+				console.log(err);
+			}
+		};
+
+		loadPlaces();
+	}, []);
 
 	return <PlaceList places={loadedPlaces} />;
 };
