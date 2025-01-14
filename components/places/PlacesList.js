@@ -12,6 +12,7 @@ const PlacesList = ({ places }) => {
 	}
 	return (
 		<FlatList
+			style={styles.list}
 			data={places}
 			keyExtractor={({ id }) => id}
 			renderItem={({ item }) => <PlaceItem place={item} onPress={() => {}} />}
@@ -29,7 +30,9 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		color: Colors.primary200,
 	},
-	container: {},
+	list: {
+		margin: 24,
+	},
 });
 
 export default PlacesList;
