@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native';
 import PlaceList from '../components/places/PlacesList';
 
-const AllPlaces = () => {
+const AllPlaces = ({ route }) => {
+	console.log(route.params);
 	return <PlaceList />;
 };
 

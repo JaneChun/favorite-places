@@ -4,8 +4,9 @@ import { Colors } from '@/constants/colors';
 import ImagePicker from '../../components/places/ImagePicker';
 import LocationPicker from '../../components/places/LocationPicker';
 import Button from '../ui/Button';
+import { Place } from '../../models/place';
 
-const PlaceForm = () => {
+const PlaceForm = ({ onCreatePlace }) => {
 	const [title, setTitle] = useState('');
 	const [image, setImage] = useState();
 	const [location, setLocation] = useState();
@@ -23,9 +24,13 @@ const PlaceForm = () => {
 	}, []);
 
 	const savePlaceHandler = () => {
-		console.log(title);
-		console.log(image);
-		console.log(location);
+		const place = new Place({
+			title,
+			imageUri: image,
+			location,
+		});
+
+		onCreatePlace(place);
 	};
 
 	return (
