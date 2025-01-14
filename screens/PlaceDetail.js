@@ -21,7 +21,10 @@ const PlaceDetail = ({ navigation, route }) => {
 
 		loadPlaceDetail();
 	}, [id]);
-	const showOnMapHandler = () => {};
+
+	const showOnMapHandler = () => {
+		navigation.navigate('Map', { location: detail.location });
+	};
 
 	if (!detail) {
 		return (
