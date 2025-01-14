@@ -58,3 +58,20 @@ export const fetchPlaces = async () => {
 
 	return places;
 };
+
+export const fetchPlaceDetail = async ({ id: placeId }) => {
+	const data = await db.getAllAsync('SELECT * FROM places WHERE id = ?', [
+		placeId,
+	]);
+
+	const { id, title, imageUri, address, lat, lng } = data[0];
+
+	const place = new Place({
+		id,
+		title,
+		imageUri,
+		location: { lat, lng, address },
+	});
+
+	return place;
+};
